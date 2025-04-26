@@ -95,7 +95,6 @@ Example:
 POST http://localhost:8080/mypackage/1.0.0
 ```
 
-> 🔧 [Insert screenshot of Postman upload request here]
 
 ### 🔢 Download Package File
 
@@ -108,7 +107,6 @@ Example:
 GET http://localhost:8080/mypackage/1.0.0/package.rep
 ```
 
-> 🔧 [Insert screenshot of Postman download request here]
 
 ---
 
