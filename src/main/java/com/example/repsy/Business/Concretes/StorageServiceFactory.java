@@ -1,6 +1,7 @@
 package com.example.repsy.Business.Concretes;
 
-import com.example.repsy.Business.Abstracts.StorageService;
+
+import com.ziftgny.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;

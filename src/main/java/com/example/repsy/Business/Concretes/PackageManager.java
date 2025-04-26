@@ -1,11 +1,10 @@
 package com.example.repsy.Business.Concretes;
 
 import com.example.repsy.Business.Abstracts.PackageService;
-import com.example.repsy.Business.Abstracts.StorageService;
 import com.example.repsy.DataAccess.Abstracts.PackageRepository;
 import com.example.repsy.Entities.Concretes.PackageEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
+import com.ziftgny.StorageService;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

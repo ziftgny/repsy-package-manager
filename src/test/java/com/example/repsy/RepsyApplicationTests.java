@@ -1,4 +1,4 @@
-package com.example.repsy;
+package com.ziftgny.repsy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
