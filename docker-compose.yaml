@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-container
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: repsydb
+
+  minio:
+    image: quay.io/minio/minio
+    container_name: minio-container
+    restart: always
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+
+  repsy-app:
+    image: repsy-package-manager
+    container_name: repsy-app
+    restart: always
+    depends_on:
+      - postgres
+      - minio
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-container:5432/repsydb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: admin
+
+      # For file system Storage uncomment (naturally you need to comment out the other way)
+      storageStrategy: file-system
+      storage.base-path: file-storage
+      # For Object storage uncomment
+      #storageStrategy: object-storage
+      #storage.endpoint-url: http://minio-container:9000
+      #storage.access-key: minioadmin
+      #storage.secret-key: minioadmin
+      #storage.bucket-name: repsy-bucket

@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
 		"com.example.repsy",        // your own app code
-		"com.ziftgny",    // filesystem manager package
+		"com.ziftgny",
+		// filesystem manager package
 })
 public class RepsyApplication {
 
