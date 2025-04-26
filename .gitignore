@@ -32,6 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 /file-storage
-/repsy-storage-filesystem
-/repsy-storage-shared
 
