@@ -95,6 +95,16 @@ After services are started:
 - **Repsy App API:** `http://localhost:8080`
 - **MinIO Console:** `http://localhost:9001` (Login: `minioadmin / minioadmin`)
 - **PostgreSQL:** `localhost:5432`
+- **To reach PostgreSQL database** 
+
+  ```bash
+  docker exec -it postgres-container psql -U postgres
+  ```
+- **To reach local files in docker** 
+
+  ```bash
+  docker exec -it repsy-app sh
+  ```
 
 ---
 
