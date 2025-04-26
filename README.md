@@ -21,7 +21,7 @@ The system is built with modular, clean architecture principles, following softw
 
 ---
 
-## 🔢 Architecture Overview
+## Architecture Overview
 
 - **Modular Design** with Maven modules:
   - `repsy-storage-shared`: Common interfaces
@@ -38,14 +38,14 @@ The system is built with modular, clean architecture principles, following softw
 
 | Strategy       | Description                                         |
 | -------------- | --------------------------------------------------- |
-| File System    | Stores packages locally inside container filesystem |
+| File System Storage    | Stores packages locally inside container filesystem |
 | Object Storage | Stores packages in MinIO object storage             |
 
 Switching between strategies is **dynamic** via environment variables.
 
 ---
 
-## 📅 Setup Instructions (Developer Friendly)
+## 📅 Setup Instructions
 
 ### 1. Clone the repository
 
@@ -70,7 +70,27 @@ This will:
 - Start MinIO server
 - Build and start the Repsy Spring Boot application
 
-### 4. Access points
+### 4. Create the MinIO Bucket
+After services are started:
+
+- Open your browser and go to http://localhost:9001 (MinIO Console)
+
+- Login with:
+
+  - Username: minioadmin
+
+  - Password: minioadmin
+
+- Click "Create Bucket +"
+
+- Create a new bucket named exactly:
+
+  ```
+  repsy-bucket
+  ```
+
+
+### 5. Access points
 
 - **Repsy App API:** `http://localhost:8080`
 - **MinIO Console:** `http://localhost:9001` (Login: `minioadmin / minioadmin`)
@@ -78,9 +98,9 @@ This will:
 
 ---
 
-## 🔢 How to Upload and Download Packages (API Guide)
+## ✉️ How to Upload and Download Packages (API Guide)
 
-### ✉️ Upload Package
+###  Upload Package
 
 - **Method:** POST
 - **URL:** `http://localhost:8080/{packageName}/{version}`
@@ -96,7 +116,7 @@ POST http://localhost:8080/mypackage/1.0.0
 ```
 
 
-### 🔢 Download Package File
+###  Download Package File
 
 - **Method:** GET
 - **URL:** `http://localhost:8080/{packageName}/{version}/{fileName}`
@@ -110,9 +130,8 @@ GET http://localhost:8080/mypackage/1.0.0/package.rep
 
 ---
 
-## 📝 How to Switch Between Storage Types
-
-Edit `docker-compose.yml` under `repsy-app` environment variables:
+## 📝 How to Switch Between Storage Strategies
+By default, the storage strategy is set to **Object Storage**. To switch between storage strategies, edit the `docker-compose.yml` file under the `repsy-app` environment variables section.
 
 #### To use File System:
 
